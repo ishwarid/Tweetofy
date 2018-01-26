@@ -1,0 +1,94 @@
+﻿@model Tweetofy1.Models.HomeModel
+@{
+    //ViewBag.Title = "Home Page";
+   // ViewBag.
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+        <meta charset="utf-8"/>
+        <title>@ViewBag.Title.</title>
+   
+    
+  </head>
+    <body>
+        @using (Html.BeginForm("ShowTweets", "Home", FormMethod.Post, new { id = "form1" }))
+                 {
+                    <div class="row">
+                        <div class="col-lg-2">
+
+                        </div>
+                      <div class="col-lg-6">
+                        <div class="input-group">
+                          
+                          @*<input type="text" class="form-control" id ="UserID">*@
+                            
+                                @Html.TextBoxFor(m => m.UserId, new { Class="form-control"})                                                           
+                              
+                            
+
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit" id ="btnGo">Go!</button>
+                          </span>
+
+                            
+                        </div><!-- /input-group -->
+                           @Html.ValidationMessageFor(m => m.UserId,"",new { @class = "error" })
+                      </div><!-- /.col-lg-6 -->
+                        
+                        <div class="col-lg-2">
+                        </div>
+                      </div>
+            
+                    
+            
+        }
+        @*<script>
+            $(document).ready(function () {
+               
+                $("#btnGo").click(function () {
+                    var user = {};
+                    user.UserID = $("#UserID").val();
+                    var AddAnExamByJsonURL = '<%: Url.Action("AddAnExamByJson", "JsonOperations") %>';
+                    //var StudentJson = {};
+                    $.ajax({
+                        cache: false,
+                        type: "POST",
+                        url: AddAnExamByJsonURL,
+                        contentType: 'application/json',
+                        dataType: "json",
+                        data: JSON.stringify(user),
+                        success: function (students) {
+                            alert("done something");
+                            //StudentJson = FixDateinJson(students);
+                            //buildStudentTree(StudentJson);
+                        }
+                    });
+
+                    /*
+                   
+                    alert(user.UserID);
+                    renderTweets = function (data) {
+
+                        data.forEach(function (element) {
+                            alert(element.ShowTweet);
+                        });
+                    };
+                    $.getJSON("ShowTweets", user, renderTweets);
+                    */
+                   
+
+                })
+            });
+        </script>*@
+    </body>
+
+</html>
+
+
+
+
+    

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Tweetofy1.Models.Tweets>
+
+@{
+  // ViewBag.Title = "ShowTweets";
+}
+
+@*<h2>ShowTweets</h2>*@
+<section>
+   
+@using (Html.BeginForm("ShowTweets", "Home", FormMethod.Post, new { id = "form1" }))
+                {
+                   <div class="row">
+                       <div class="col-lg-3">
+                       </div>
+                     <div class="col-lg-6">
+                       <div class="input-group">
+                                                  
+                            @*@Html.TextBoxFor(m => m.userDeatils.UserId, new { Class="form-control"})*@                                                           
+                               @*@Html.ValidationMessageFor(m => m.userDeatils.UserId)*@
+                           <!--<input type="text" class="form-control" id ="UserID">-->
+                           
+                           @Html.TextBox("UserId", null, new { @class="form-control valid" ,@data_val = "true", @data_val_required = "Username is required" })
+                           
+                           <span class="input-group-btn">
+                           <button class="btn btn-default" type="submit" id ="btnGo">Go!</button>
+                         </span>
+                            
+                       </div>
+                          @Html.ValidationSummary()
+                     </div> 
+                      
+                       <div class="col-lg-3">
+                       </div>
+                     </div>
+       }
+      
+</section>
+
+<section style="padding:1%;">
+   
+            <div class="row">
+                        <div class="col-lg-2">
+
+                       </div>
+                <div class="col-lg-8">
+                       <div class="well">                      
+                                                               
+                                 
+
+                                 <!-- List group -->
+                                   <div>
+                                  <table class="table table-striped">
+                                     <tbody>
+                                         
+                                          @foreach (Tweetofy1.Models.Tweets br in @Model)
+                                      {
+                                              <tr class="table-light">
+                                                  <td>@br.text <br/>
+                                                    <b>@br.created_at</b></td>
+                                              </tr>
+                                         
+                                      }
+                                          @*ViewBag.message;*@
+                                   </tbody>
+                                 </table>
+                                   </div>
+                    </div>
+                       <div class="col-lg-2">
+
+                       </div>
+                   </div>
+                </div>
+
+       
+</section>
